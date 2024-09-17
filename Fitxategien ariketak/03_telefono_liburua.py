@@ -2,9 +2,9 @@ def find_phone(name):
     # Read the file and create it if necessary
     with open('Fitxategien ariketak/telefonoak.txt', 'a+') as file:
         # Read the file line by line
-        for line in file.readlines():
-            print(line)
-            if line.split('-')[0] == name:
+        file.seek(0)
+        for line in file.readlines(0):
+            if line.split('-')[0].strip().upper() == name.upper():
                 return line.split('-')[1]
         return 'Ez dago holako bezerorik'        
 
@@ -13,11 +13,12 @@ def delete_phone(name):
     new_book = ''
     with open('Fitxategien ariketak/telefonoak.txt', 'a+') as file:
         # Save the file of the content without the selected client
+        file.seek(0)
         for line in file.readlines():
-            if line.split('-')[0] == name:
+            if line.split('-')[0].strip().upper() == name.upper():
                 pass
             else:
-                new_book += ''
+                new_book += line
         
     
     with open('Fitxategien ariketak/telefonoak.txt', 'w') as file:
@@ -52,10 +53,10 @@ def main():
         
         if option == 1:
             name = input('Sartu bezeroaren izena: ')
-            find_phone(name)
+            print(find_phone(name))
         elif option == 2:
             name = input('Sartu bezeroaren izena: ')
-            delete_phone(name)
+            print(delete_phone(name))
         elif option == 3:
             name = input('Sartu bezeroaren izena: ')
             number = 0
@@ -66,7 +67,7 @@ def main():
                 except:
                     print('Zure erantzuna ez du balio, saiatu berriz..')
                     pass
-            save_phone(name, number)
+            print(save_phone(name, number))
         elif option == 4:
             print('Programa itxi egingo da.')
             break
