@@ -81,3 +81,73 @@ def datuak_ezabatu(connection):
 
     except:
         return False
+    
+def gehitu_ikaslea(connection, code, name, surname):
+    # Create db cursor
+    cursor = connection.cursor()
+
+    try:
+        # Insert data into ikasleak table
+        query = "INSERT INTO Ikasleak VALUES ({}, '{}', '{}')"
+        cursor.execute(query.format(code, name, surname))
+        connection.commit()
+        return 'Ikaslea ondo gehitu da.'
+
+    except:
+        return 'Zerbait gaizki joan da'
+
+def nota_sartu(connection, ikasle_code, ikasgai_code, mark, note):
+    # Create db cursor
+    cursor = connection.cursor()
+
+    try:
+        # Insert data into notak table
+        query = "INSERT INTO Notak VALUES ({}, '{}', {}, {})"
+        cursor.execute(query.format(mark, note, ikasgai_code, ikasle_code))
+        connection.commit()
+        return 'Nota ondo gorde da.'
+    
+    except:
+        return 'Zerbait gaizki joan da'
+
+def nota_aldatu(connection, ikasle_code, ikasgai_code, mark, note):
+    # Create db cursor
+    cursor = connection.cursor()
+
+    try:
+        # Insert data into notak table
+        query = "UPDATE Notak SET nota = {}, oharra = '{}' WHERE ikasgai_kodea = {} AND ikasle_kodea = {}"
+        cursor.execute(query.format(mark, note, ikasgai_code, ikasle_code))
+        connection.commit()
+        return 'Nota ondo aldatu da.'
+    
+    except:
+        return 'Zerbait gaizki joan da'
+
+def gehitu_ikasgaia(connection, code, name, level, language):
+    # Create db cursor
+    cursor = connection.cursor()
+
+    try:
+        # Insert data into ikasgaiak table
+        query = "INSERT INTO Ikasgaiak VALUES ({}, '{}', '{}', '{}')"
+        cursor.execute(query.format(code, name, level, language))
+        connection.commit()
+        return 'Ikasgaia ondo gehitu da.'
+    
+    except:
+        return 'Zerbait gaizki joan da'
+
+def ezabatu_ikaslea(connection, code):
+    # Create db cursor
+    cursor = connection.cursor()
+
+    try:
+        # Insert data into ikasleak table
+        query = 'DELETE FROM Ikasleak WHERE kodea = {} '
+        cursor.execute(query.format(code))
+        connection.commit()
+        return 'Ikaslea ondo ezabatu da.'
+    
+    except:
+        return 'Zerbait gaizki joan da.'

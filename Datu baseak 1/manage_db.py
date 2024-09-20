@@ -1,5 +1,5 @@
 import mysql.connector
-from db_utils import taulak_sortu, datuak_hasieratu, datuak_ezabatu, taulak_ezabatu
+from db_utils import taulak_sortu, datuak_hasieratu, datuak_ezabatu, taulak_ezabatu, gehitu_ikaslea, nota_sartu, nota_aldatu, gehitu_ikasgaia, ezabatu_ikaslea
 
 def ask_number(prompt):
     while True:
@@ -40,43 +40,68 @@ def main():
             6. Irten''')
         
         # Ask the user for the selected option
-        option = ask_number('Sartu zure aukera')
+        option = ask_number('Sartu zure aukera: ')
         
         if option == 1:
-            #gehitu_ikaslea
-            # ask for kodea, name, surname
-            print(...)
+            # gehitu_ikaslea
+            # Ask user for kodea, izena, abizena
+            code = ask_number('Sartu ikaslearen kodea (ezin da errepikatu): ')
+            name = input('Sartu ikaslearen izena: ')
+            surname = input('Sartu ikaslearen abizena: ')
+            print(gehitu_ikaslea(connection, code, name, surname))
 
         elif option == 2:
-            #nota_sartu
-            #nota, oharra, ikasle_kode, ikasgai_kode
-            print(...)
+            # nota_sartu
+            # Ask user for nota, oharra, ikasle_kode, ikasgai_kode
+            ikasle_code = ask_number('Sartu ikaslearen kodea: ')
+            ikasgai_code = ask_number('Sartu ikasgaiaren kodea: ')
+            mark = ask_number('Sartu nota: ')
+            note = input('Sartu notaren oharra: ')
+            print(nota_sartu(connection, ikasle_code, ikasgai_code, mark, note))
 
         elif option == 3:
-            #nota_aldatu
-            #nota, oharra, ikasle_kode, ikasgai_kode
-            print(...)
+            # nota_aldatu
+            # Ask user for nota, oharra, ikasle_kode, ikasgai_kode
+            ikasle_code = ask_number('Sartu ikaslearen kodea: ')
+            ikasgai_code = ask_number('Sartu ikasgaiaren kodea: ')
+            mark = ask_number('Sartu nota berria: ')
+            note = input('Sartu notaren ohar berria: ')
+            print(nota_aldatu(connection, ikasle_code, ikasgai_code, mark, note))
+
         elif option == 4:
-            print(...)
+            # gehitu_ikasgaia
+            # Ask user for kodea, izena, maila, hizkuntza
+            code = ask_number('Sartu ikasgaiaren kodea (ezin da errepikatu): ')
+            name = input('Sartu ikasgaiaren izena: ')
+            level = input('Sartu ikasgaiaren maila: ')
+            language = input('Sartu ikasgaiaren hizkuntza: ')
+            print(gehitu_ikasgaia(connection, code, name, level, language))
+
         elif option == 5:
-            print(...)
+            # ezabtu_ikaslea
+            # Ask user for kodea
+            code = ask_number('Sartu ikaslearen kodea: ')
+            print(ezabatu_ikaslea(connection, code))
+
         elif option == 6:
             while True:
                 # Print the menu
                 print('''Programa itxi duzu, baino bukatu aurretik:
-                    1. Datu guztiak ezabatu
-                    2. Taula guztiak ezabatu
-                    3. Dena mantendu eta irten''')
+            1. Datu guztiak ezabatu
+            2. Taula guztiak ezabatu
+            3. Dena mantendu eta irten''')
                 
                 # Ask the user for the selected option
-                option = ask_number('Sartu zure aukera')
+                option = ask_number('Sartu zure aukera: ')
                 
                 if option == 1:
                     datuak_ezabatu(connection)
                     print('Datuak guztiz ezabatu dira')
+                    break
                 elif option == 2:
                     taulak_ezabatu(connection)
                     print('Taula guztiak ezabatu dira')
+                    break
                 elif option == 3:
                     print('Datuak ez dira ezabatu')
                     break
