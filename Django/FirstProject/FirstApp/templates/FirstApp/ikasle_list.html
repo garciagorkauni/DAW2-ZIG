@@ -1,0 +1,14 @@
+{% extends 'FirstApp/base.html' %}
+{% block content %}
+
+<ul>
+    {% for ikasle in ikasleak %}
+    <li>{{ ikasle }}</li>
+    {% endfor %}
+</ul>
+
+<div class="page-header">
+    <a href="{% url 'zerrenda-ikasle-new' %}"><span class="glyphicon glyphicon-plus">Ikasle berria gehitu</span></a>
+</div>
+
+{% endblock %}
