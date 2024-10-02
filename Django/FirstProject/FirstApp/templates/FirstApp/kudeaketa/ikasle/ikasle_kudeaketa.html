@@ -1,0 +1,14 @@
+{% extends 'FirstApp/base.html' %}
+{% block content %}
+
+<h2>Kudeatu Ikasleak</h2>
+<br>
+<a class="btn btn-primary" href="{% url 'zerrenda-ikasle-new' %}" role="button">Ikasle berria gehitu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'zerrenda-ikasle-new' %}" role="button">Ikaslea ezabatu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'zerrenda-default' %}" role="button">Ikasleak ikusi</a>
+
+{% endblock %}

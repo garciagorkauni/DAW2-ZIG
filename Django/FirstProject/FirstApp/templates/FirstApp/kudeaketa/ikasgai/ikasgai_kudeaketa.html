@@ -1,0 +1,11 @@
+{% extends 'FirstApp/base.html' %}
+{% block content %}
+
+<h2>Kudeatu Ikasgaiak</h2>
+<br>
+<a class="btn btn-primary" href="{% url 'new-ikasgai' %}" role="button">Ikasgai berria gehitu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'ikasgai-list' %}" role="button">Ikasgaiak ikusi</a>
+
+{% endblock %}
