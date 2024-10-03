@@ -1,0 +1,12 @@
+{% extends 'FirstApp/base.html' %}
+{% block content %}
+
+{% for nota in notak %}
+<h4>
+    {{ nota }}
+    <a href="{% url 'edit-nota-form' ikasle_id=nota.ikasle.id ikasgai_id=nota.ikasgaia.id%}" class="btn btn-info">Edit</a>
+</h4>
+<br>
+{% endfor %}
+
+{% endblock %}

@@ -15,3 +15,13 @@ class NotaForm(forms.ModelForm):
     class Meta:
         model=Nota
         fields=['ikasle','ikasgaia', 'nota', 'oharra']
+
+class EditNotaForm(forms.ModelForm):
+    class Meta:
+        model=Nota
+        fields=['ikasle','ikasgaia', 'nota', 'oharra']
+
+    def __init__(self, *args, **kwargs):
+        super(EditNotaForm, self).__init__(*args, **kwargs)
+        self.fields['ikasle'].disabled = True
+        self.fields['ikasgaia'].disabled = True

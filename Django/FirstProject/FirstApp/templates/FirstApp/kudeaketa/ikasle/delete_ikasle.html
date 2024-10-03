@@ -1,0 +1,16 @@
+{% extends 'FirstApp/base.html' %}
+{% block content %}
+
+{% for ikasle in ikasleak %}
+<form method="POST" >
+    {% csrf_token %}
+    <h4>
+        {{ ikasle }} 
+        <input type="hidden" id="uid" name="uid" value="{{ikasle.id}}">
+        <input type="submit" class="btn btn-danger" value="X">
+    </h4>
+    <br>
+</form>
+{% endfor %}
+
+{% endblock %}

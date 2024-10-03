@@ -23,8 +23,8 @@ class Ikasgaia(models.Model):
 class Nota(models.Model):
     nota = models.FloatField()
     oharra = models.CharField(max_length=100)
-    ikasgaia = models.ForeignKey(Ikasgaia, to_field='id', on_delete=models.CASCADE)
-    ikasle = models.ForeignKey(Ikasle, to_field='id', on_delete=models.CASCADE)
+    ikasgaia = models.ForeignKey(Ikasgaia, on_delete=models.CASCADE)
+    ikasle = models.ForeignKey(Ikasle, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.ikasle.izena} - {self.ikasgaia.izena}: {self.nota} ({self.oharra})"
