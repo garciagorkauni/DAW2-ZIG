@@ -74,18 +74,30 @@ WSGI_APPLICATION = 'FirstProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# UNI
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testing',
         'USER': 'root',
         # 'PASSWORD': 'root',
-        'PASSWORD': 'Admin123',
-        'HOST': 'localhost',
+        'PASSWORD': 'root',
+        'HOST': 'mendiak_db',
         'PORT': '3306',
     }
 }
 
+# CS
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "testing",
+#         "USER": "root",
+#         "PASSWORD": "root",
+#         "HOST": "127.0.0.1",
+#         "PORT": "8888"
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

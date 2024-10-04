@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Ikasle, Nota, Ikasgaia
 from .forms import IkasleForm, NotaForm, IkasgaiForm, EditNotaForm
 
@@ -60,15 +60,19 @@ def edit_nota(request):
         return render(request, 'FirstApp/kudeaketa/nota/edit_nota.html',{'notak':notaZerrenda})
 
 def edit_nota_form(request, ikasle_id, ikasgai_id):
+    ikasle = get_object_or_404(Ikasle, id=ikasle_id)
+    ikasgaia = get_object_or_404(Ikasgaia, id=ikasgai_id)
+    nota = get_object_or_404(Nota, ikasle=ikasle, ikasgaia=ikasgaia)
+
     if request.method == 'POST':
-        form=EditNotaForm(request.POST)
-        if form.is_valid:
-            nota = form.save()
-            nota.save()
-        return redirect('nota-list')
+        form = EditNotaForm(request.POST, instance=nota)
+        if form.is_valid():
+            form.save()
+            return redirect('nota-list')
     else:
-        form=EditNotaForm()
-        return render(request, 'FirstApp/kudeaketa/nota/nota_new.html', {'form':form})
+        form = EditNotaForm(instance=nota)
+
+    return render(request, 'FirstApp/kudeaketa/nota/nota_new.html', {'form': form})
 
 
 def ikasgai_list(request):

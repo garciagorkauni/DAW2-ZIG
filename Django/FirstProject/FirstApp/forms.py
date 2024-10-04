@@ -1,5 +1,6 @@
 from django import forms
 from .models import Ikasle, Nota, Ikasgaia
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class IkasleForm(forms.ModelForm):
     class Meta:
@@ -18,10 +19,15 @@ class NotaForm(forms.ModelForm):
 
 class EditNotaForm(forms.ModelForm):
     class Meta:
-        model=Nota
-        fields=['ikasle','ikasgaia', 'nota', 'oharra']
+        model = Nota
+        fields = ['ikasle', 'ikasgaia', 'nota', 'oharra']
 
     def __init__(self, *args, **kwargs):
         super(EditNotaForm, self).__init__(*args, **kwargs)
         self.fields['ikasle'].disabled = True
         self.fields['ikasgaia'].disabled = True
+        self.fields['nota'].validators = [
+            MinValueValidator(0), 
+            MaxValueValidator(10)
+        ]
+
