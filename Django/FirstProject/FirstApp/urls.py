@@ -16,7 +16,7 @@ urlpatterns = [
     path('new-nota/', views.nota_new, name='new-nota'),
     path('edit-nota/', views.edit_nota, name='edit-nota'),
     path('edit-nota-form/<int:ikasle_id>/<int:ikasgai_id>/', views.edit_nota_form, name='edit-nota-form'),
-
+    
     path('ikasgai-list/', views.ikasgai_list, name='ikasgai-list'),
     path('new-ikasgai/', views.ikasgai_new, name='new-ikasgai'),
 ]
