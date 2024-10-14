@@ -1,0 +1,9 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+<h1>Zita berria</h1>
+<br>
+<form method="POST" class="post-form">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Gorde</button>
+</form>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Pazientea, Medikua
-from .forms import PazienteaForm, MedikuaForm
+from .models import Pazientea, Medikua, Zita
+from .forms import PazienteaForm, MedikuaForm, ZitaForm
 
 # Default view
 def base(request):
@@ -105,3 +105,15 @@ def edit_medikua_form(request, medikua_id):
         form = MedikuaForm(instance=medikua)
 
     return render(request, 'osakidetza/medikua/medikua_new.html', {'form': form})
+
+# CRUD for Zita
+def new_zita(request):
+    if request.method == 'POST':
+        form=ZitaForm(request.POST)
+        if form.is_valid:
+            zita = form.save()
+            zita.save()
+        return redirect('base')
+    else:
+        form=ZitaForm()
+        return render(request, 'osakidetza/zita/zita_new.html', {'form':form})

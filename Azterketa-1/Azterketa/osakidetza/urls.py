@@ -19,4 +19,8 @@ urlpatterns = [
     path('medikua/delete/', views.delete_medikua, name='delete-medikua'),
     path('medikua/edit/', views.edit_medikua, name='edit-medikua'),
     path('medikua/edit-form/<int:medikua_id>/', views.edit_medikua_form, name='edit-medikua-form'),
+
+    # CRUD for Zita
+    path('zita/kudeaketa/', TemplateView.as_view(template_name='osakidetza/zita/zita_kudeaketa.html'), name='zita-kudeaketa'),
+    path('zita/new/', views.new_zita, name='new-zita'),
 ]
