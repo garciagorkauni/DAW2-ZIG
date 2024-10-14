@@ -8,6 +8,7 @@ urlpatterns = [
 
     # CRUD for Pazientea
     path('pazientea/kudeaketa/', TemplateView.as_view(template_name='osakidetza/pazientea/pazientea_kudeaketa.html'), name='pazientea-kudeaketa'),
+    path('pazientea/list/', views.list_pazientea, name='list-pazientea'),
     path('pazientea/new/', views.new_pazientea, name='new-pazientea'),
     path('pazientea/delete/', views.delete_pazientea, name='delete-pazientea'),
     path('pazientea/edit/', views.edit_pazientea, name='edit-pazientea'),
@@ -22,5 +23,6 @@ urlpatterns = [
 
     # CRUD for Zita
     path('zita/kudeaketa/', TemplateView.as_view(template_name='osakidetza/zita/zita_kudeaketa.html'), name='zita-kudeaketa'),
+    path('zita/list/', views.list_zita, name='list-zita'),
     path('zita/new/', views.new_zita, name='new-zita'),
 ]

@@ -1,0 +1,12 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+
+<h1>Zita guztiak</h1>
+<br>
+{% for zita in zitak %}
+    <h4>{{ zita }}</h4>
+    <br>
+{% endfor %}
+
+
+{% endblock %}

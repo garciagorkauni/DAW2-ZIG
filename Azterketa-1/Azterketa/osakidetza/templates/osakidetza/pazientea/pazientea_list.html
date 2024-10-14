@@ -1,0 +1,12 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+
+<h1>Paziente guztiak</h1>
+<br>
+{% for paziente in pazienteak %}
+    <h4>{{ paziente }}</h4>
+    <br>
+{% endfor %}
+
+
+{% endblock %}

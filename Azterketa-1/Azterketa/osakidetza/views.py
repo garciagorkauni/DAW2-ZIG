@@ -7,6 +7,10 @@ def base(request):
     return render(request, 'osakidetza/base.html')
 
 # CRUD for Pazientea
+def list_pazientea(request):
+    pazienteZerrenda=Pazientea.objects.all()
+    return render(request, 'osakidetza/pazientea/pazientea_list.html',{'pazienteak':pazienteZerrenda})
+
 def new_pazientea(request):
     if request.method == 'POST':
         form=PazienteaForm(request.POST)
@@ -107,6 +111,10 @@ def edit_medikua_form(request, medikua_id):
     return render(request, 'osakidetza/medikua/medikua_new.html', {'form': form})
 
 # CRUD for Zita
+def list_zita(request):
+    zitaZerrenda=Zita.objects.all()
+    return render(request, 'osakidetza/zita/zita_list.html',{'zitak':zitaZerrenda})
+
 def new_zita(request):
     if request.method == 'POST':
         form=ZitaForm(request.POST)
