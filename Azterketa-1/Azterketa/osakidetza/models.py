@@ -17,3 +17,12 @@ class Medikua(models.Model):
 
     def __str__(self):
         return f"{self.izena} {self.abizena} ({self.espezialidadea})"
+
+class Zita(models.Model):
+    data = models.DateTimeField()
+    oharra = models.CharField(max_length=200)
+    pazientea = models.ForeignKey(Pazientea, on_delete=models.CASCADE)
+    medikua = models.ForeignKey(Medikua, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.izena} {self.abizena} ({self.espezialidadea})"
