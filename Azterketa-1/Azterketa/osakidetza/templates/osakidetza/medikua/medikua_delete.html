@@ -1,0 +1,18 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+
+<h1>Medikua ezabatu</h1>
+<br>
+{% for medikua in medikuak %}
+<form method="POST" >
+    {% csrf_token %}
+    <h4>
+        {{ medikua }} 
+        <input type="hidden" id="id" name="id" value="{{medikua.id}}">
+        <input type="submit" class="btn btn-danger" value="X">
+    </h4>
+    <br>
+</form>
+{% endfor %}
+
+{% endblock %}

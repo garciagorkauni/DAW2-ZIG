@@ -1,0 +1,14 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+
+<h1>Kudeatu Pazienteak</h1>
+<br>
+<a class="btn btn-primary" href="{% url 'new-pazientea' %}" role="button">Paziente berria gehitu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'delete-pazientea' %}" role="button">Pazientea ezabatu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'edit-pazientea' %}" role="button">Pazientea editatu</a>
+
+{% endblock %}

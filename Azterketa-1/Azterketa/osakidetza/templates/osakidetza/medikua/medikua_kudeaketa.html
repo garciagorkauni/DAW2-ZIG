@@ -1,0 +1,14 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+
+<h1>Kudeatu Medikuak</h1>
+<br>
+<a class="btn btn-primary" href="{% url 'new-medikua' %}" role="button">Mediku berria gehitu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'delete-medikua' %}" role="button">Mediku ezabatu</a>
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'edit-medikua' %}" role="button">Mediku editatu</a>
+
+{% endblock %}

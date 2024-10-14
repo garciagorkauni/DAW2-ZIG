@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Pazientea, Medikua
 
-# Register your models here.
+admin.site.register(Pazientea)
+admin.site.register(Medikua)

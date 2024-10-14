@@ -1,0 +1,14 @@
+{% extends 'osakidetza/base.html' %}
+{% block content %}
+
+<h1>Medikua editatu</h1>
+<br>
+{% for medikua in medikuak %}
+<h4>
+    {{ medikua }}
+    <a href="{% url 'edit-medikua-form' medikua_id=medikua.id %}" class="btn btn-info">Edit</a>
+</h4>
+<br>
+{% endfor %}
+
+{% endblock %}
