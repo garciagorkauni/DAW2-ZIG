@@ -44,7 +44,33 @@
             <li>Izenburura: <?php echo $_POST["title"] ?></li>
             <li>Testua: <?php echo $_POST["content"] ?></li>
             <li>Kategoria: <?php echo $_POST["type"] ?></li>
-            <li>Irudia: <?php echo $_FILES["image"]["tmp_name"] ?></li>
+            <li>
+                Irudia: 
+                <?php 
+                if (!empty($_FILES["image"]["tmp_name"])) {
+                    $check = getimagesize($_FILES["image"]["tmp_name"]);
+                    if ($check !== false) {
+                        $uploadDir = "uploads/";
+                        if (!is_dir($uploadDir)) {
+                            mkdir($uploadDir, 0777, true);
+                        }
+                        
+                        $imageName = uniqid() . "_" . basename($_FILES["image"]["name"]);
+                        $uploadPath = $uploadDir . $imageName;
+
+                        if (move_uploaded_file($_FILES["image"]["tmp_name"], $uploadPath)) {
+                            echo '<a href="' . $uploadPath . '" download>Deskargatu irudia</a>';
+                        } else {
+                            echo "Errorea irudia gordetzean.";
+                        }
+                    } else {
+                        echo "Igo duzun fitxategia ez da irudi bat.";
+                    }
+                } else {
+                    echo "Ez da irudirik bidali.";
+                }
+                ?>
+            </li>
         </ul>
 
     </div>
