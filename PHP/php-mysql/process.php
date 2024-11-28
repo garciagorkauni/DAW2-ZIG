@@ -40,12 +40,13 @@ if ($mysqli->query($sql_table) === TRUE) {
     echo "Errorea taula sortzean: " . $mysqli->error . "<br>";
 }
 
-$query = "SELECT mota, zonaldea, helbidea, logelak, prezioa, tamaina, extrak, irudia FROM Eraikuntza ORDER BY prezioa ASC";
+$query = "SELECT id, mota, zonaldea, helbidea, logelak, prezioa, tamaina, extrak, irudia FROM Eraikuntza ORDER BY prezioa ASC";
 $result = $mysqli->query($query);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
+        echo "<td><input type='checkbox' name='delete_ids[]' value='" . $row['id'] . "'></td>";
         echo "<td>" . htmlspecialchars($row['mota']) . "</td>";
         echo "<td>" . htmlspecialchars($row['zonaldea']) . "</td>";
         echo "<td>" . htmlspecialchars($row['helbidea']) . "</td>";
@@ -61,8 +62,9 @@ if ($result->num_rows > 0) {
         echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='8'>Ez dago daturik</td></tr>";
+    echo "<tr><td colspan='9'>Ez dago daturik</td></tr>";
 }
+
 
 $mysqli->close();
 ?>
