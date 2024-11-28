@@ -42,5 +42,7 @@
             <?php include 'process.php'; ?>
         </tbody>
     </table>
+    <br>
+    <a href="form.php"><button>Etxebizitza berria gehitu</button></a>
 </body>
 </html>
